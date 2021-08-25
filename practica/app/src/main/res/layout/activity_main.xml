@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_aleatorio"
+        android:layout_width="114dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:text="rellenar"
+        app:layout_constraintBottom_toTopOf="@+id/txt_nombre"
+        app:layout_constraintStart_toEndOf="@+id/btn_anterior"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_anterior"
+        android:layout_width="50dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="28dp"
+        app:icon="@android:drawable/ic_media_previous"
+        app:layout_constraintBottom_toTopOf="@+id/txt_nombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_nombre"
+        android:layout_width="342dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="textPersonName"
+
+        app:layout_constraintBottom_toTopOf="@+id/txt_apellido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_apellido"
+        android:layout_width="342dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="Apellido"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/txt_personalidad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_personalidad"
+        android:layout_width="342dp"
+        android:layout_height="47dp"
+        android:ems="10"
+
+        android:hint="Personalidad"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <Button
+        android:id="@+id/btn_nuevo"
+        android:layout_width="86dp"
+        android:layout_height="51dp"
+
+        android:layout_marginStart="16dp"
+        android:text="Crear"
+        app:layout_constraintBottom_toTopOf="@+id/txt_nombre"
+        app:layout_constraintStart_toEndOf="@+id/btn_aleatorio"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_siguiente"
+        android:layout_width="48dp"
+        android:layout_height="53dp"
+        android:textAlignment="center"
+        app:icon="@android:drawable/ic_media_next"
+        app:layout_constraintBottom_toTopOf="@+id/txt_nombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.291"
+        app:layout_constraintStart_toEndOf="@+id/btn_nuevo"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
