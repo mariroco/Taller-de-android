@@ -14,72 +14,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        /*
-        val txt_nombre:TextView = findViewById(R.id.txt_nombre)
-        val txt_comida = findViewById<TextView>(R.id.txt_comida)
-        val txt_edad = findViewById<TextView>(R.id.txt_edad)
-        val txt_especie = findViewById<TextView>(R.id.txt_especie)
-
-        var btn_accion = findViewById<Button>(R.id.btn_accion)
-        var btn_comer = findViewById<Button>(R.id.btn_comer)
-        var btn_sonido = findViewById<Button>(R.id.btn_sonido)
-        var btn_nuevo = findViewById<Button>(R.id.btn_nuevo)
-        var btn_anterior = findViewById<Button>(R.id.btn_anterior)
-        var btn_siguiente = findViewById<Button>(R.id.btn_siguiente)
-
-        btn_accion.setOnClickListener{
-            Toast.makeText(this, animales[contador].accion(), Toast.LENGTH_LONG).show()
-        }
-        btn_comer.setOnClickListener{
-            Toast.makeText(this, animales[contador].comer(), Toast.LENGTH_LONG).show()
-        }
-
-        /*btn_sonido.setOnClickListener{
-            Toast.makeText(this, animales[contador].hablar(), Toast.LENGTH_LONG).show()
-        }*/
-
-        btn_nuevo.setOnClickListener{
-            var nuevo = animal()
-            when ((0..2).random()){
-                0-> nuevo=perro()
-                1-> nuevo=gato()
-                2-> nuevo=pajaro()
-            }
-            txt_nombre.setText(nuevo.nombre)
-            txt_edad.setText(nuevo.edad.toString())
-            txt_comida.setText(nuevo.comidafav)
-            txt_especie.setText(nuevo.especie)
-            animales.add(nuevo)
-            contador = animales.size-1
-        }
-
-        btn_anterior.setOnClickListener{
-            contador--
-            if (animales.size>0) {
-                if (contador < 0) {
-                    contador = animales.size-1
-                }
-                txt_nombre.setText(animales[contador].nombre)
-                txt_edad.setText(animales[contador].edad.toString())
-                txt_comida.setText(animales[contador].comidafav)
-                txt_especie.setText(animales[contador].especie)
-            }else{}
-        }
-
-        btn_siguiente.setOnClickListener{
-            contador++
-            if(animales.size>0){
-                if (contador==animales.size){
-                    contador=0
-                }
-                txt_nombre.setText(animales[contador].nombre)
-                txt_edad.setText(animales[contador].edad.toString())
-                txt_comida.setText(animales[contador].comidafav)
-                txt_especie.setText(animales[contador].especie)
-            }else{}
-        }*/
-
-
     }
 
     fun btn_sonido_click(view: View) {
@@ -110,12 +44,12 @@ class MainActivity : AppCompatActivity() {
             1-> nuevo=gato()
             2-> nuevo=pajaro()
         }
-        cargar_animal(nuevo)
+
+        cargar_animal(nuevo,true)
         contador = animales.size-1
     }
 
     fun btn_anterior_click(view: View) {
-
         if (animales.size>0) {
             contador--
             cambio()
@@ -125,8 +59,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun cambio(){
-        if(contador>=animales.size){ contador=0 }else if(contador<0){contador = animales.size-1}
-        cargar_animal(animales[contador])
+        when(contador){
+            -1 -> contador = animales.size-1
+            animales.size -> contador=0
+        }
+        cargar_animal(animales[contador],false)
     }
 
 
@@ -140,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun cargar_animal(a:animal?){
+    fun cargar_animal(a:animal?,b:Boolean){
         val txt_nombre:TextView = findViewById(R.id.txt_nombre)
         val txt_comida = findViewById<TextView>(R.id.txt_comida)
         val txt_edad = findViewById<TextView>(R.id.txt_edad)
@@ -151,7 +88,7 @@ class MainActivity : AppCompatActivity() {
             txt_edad.setText(a.edad.toString())
             txt_comida.setText(a.comidafav)
             txt_especie.setText(a.especie)
-            animales.add(a)
+            if (b){ animales.add(a)}
         }
 
         return
