@@ -1,5 +1,0 @@
-Tarea de kotlin
--3 actividades
-  1. Carrusel de 10 imagenes: 5svg, 5png; boton de más info
-  2. Imagen y texto descriptivo con estrella de fav
-  3. Muestra imagen en más detalle
