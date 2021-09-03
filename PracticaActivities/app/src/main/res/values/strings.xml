@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">practicaActivities</string>
+    <string name="text_seeDetails">image details</string>
+    <string name="text_sample">Lorem Ipsum</string>
+    <string name="text_imageDate">This image was taken on %1$s </string>
+    <string name="text_imagePlace">This image was taken in %1$s </string>
 </resources>
