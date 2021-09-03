@@ -1,5 +1,6 @@
 package com.mariroco.practicaactivities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -34,7 +35,13 @@ class ImageDetail : AppCompatActivity() {
         txtvPlace = findViewById(R.id.txtv_place)
         txtvNote = findViewById(R.id.txtv_note)
 
-        imgvImage.setOnClickListener {  }
+        imgvImage.setOnClickListener {
+            startActivity(Intent(this, ImageExpanded::class.java).apply {
+                putExtra("selectedImg",image.image)
+            })
+
+        }
+
         imgvFavorite.setOnClickListener {
             if(image.status == LIKED){
                 image.statusChange(UNLIKED)

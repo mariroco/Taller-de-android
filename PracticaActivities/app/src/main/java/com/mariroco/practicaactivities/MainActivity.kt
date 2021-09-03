@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         image = Image()
         initViews()
         setEvents()
+        counterChanges()
     }
 
     //Initializes activity_main.xml
