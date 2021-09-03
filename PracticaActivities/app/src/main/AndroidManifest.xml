@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracticaActivities">
         <activity
-            android:name=".imageDetail"
+            android:name=".ImageDetail"
             android:exported="true" />
         <activity
-            android:name=".imageExpanded"
+            android:name=".ImageExpanded"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
