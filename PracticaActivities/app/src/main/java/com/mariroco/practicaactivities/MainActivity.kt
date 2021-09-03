@@ -62,8 +62,8 @@ class MainActivity : AppCompatActivity() {
     //Makes the counter turn around
     fun counterChanges(){
         when(counter){
-            -1 -> counter = 2
-            3 -> counter = 0
+            -1 -> counter = 9
+            10 -> counter = 0
         }
         image.getImage(counter)?.let{ it.image?.let { it1 -> imgvImage.setImageResource(it1) } }
     }
