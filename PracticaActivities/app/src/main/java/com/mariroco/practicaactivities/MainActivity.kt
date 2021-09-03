@@ -66,4 +66,5 @@ class MainActivity : AppCompatActivity() {
         }
         image.getImage(counter)?.let{ it.image?.let { it1 -> imgvImage.setImageResource(it1) } }
     }
+
 }
