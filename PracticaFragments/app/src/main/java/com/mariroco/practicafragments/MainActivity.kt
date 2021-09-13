@@ -1,5 +1,7 @@
 package com.mariroco.practicafragments
 
+import android.app.Application
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View.GONE
@@ -25,10 +27,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initVar()
+        initView()
     }
 
-    fun initVar(){
+    fun initView(){
         imgvImage = findViewById(R.id.imgv_image)
         imgvPrevious = findViewById(R.id.imgv_previous)
         imgvNext = findViewById(R.id.imgv_next)
@@ -55,7 +57,8 @@ class MainActivity : AppCompatActivity() {
 
     fun replaceFragment(fragment: Fragment, tag: String) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container, fragment, tag).addToBackStack("").commit()
+            .replace(R.id.container, fragment, tag).addToBackStack("DetailFragment").commit()
     }
 
 }
+
