@@ -43,15 +43,21 @@ class DetailFragment : Fragment() {
         imgMain.setOnClickListener {
            changeFrag()
         }
+        imgFav.setOnClickListener {
+
+        }
     }
 
     fun changeFrag(){
         val frag=ImageFragment.newInstance()
         (activity as MainActivity).replaceFragment(frag,ImageFragment.TAG)
     }
-
     override fun onStop() {
         super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
         (activity as MainActivity?)?.changeVisibility()
     }
     override fun onCreateView(
