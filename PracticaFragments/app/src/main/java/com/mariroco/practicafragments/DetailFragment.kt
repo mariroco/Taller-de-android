@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import java.lang.Boolean.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +23,8 @@ class DetailFragment : Fragment() {
     private lateinit var imgMain: ImageView
     private lateinit var txtDetail: TextView
     private lateinit var imgFav: ImageView
+    private lateinit var imageList: List<Image>
+    var counter : Int=0
 
     //private var param1: String? = null
     //private var param2: String? = null
@@ -32,6 +35,7 @@ class DetailFragment : Fragment() {
             //param1 = it.getString(ARG_PARAM1)
             //param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
 
@@ -39,21 +43,35 @@ class DetailFragment : Fragment() {
         imgMain = requireView().findViewById(R.id.img_main)
         txtDetail = requireView().findViewById(R.id.txt_detail)
         imgFav = requireView().findViewById(R.id.img_fav)
+        counter = (activity as MainActivity).counter
+        imageList = (activity as MainActivity).imageList
+        imgMain.setImageResource(imageList[counter].image)
+        txtDetail.setText(imageList[counter].note)
+        if(imageList[counter].status){imgFav.setImageResource(R.drawable.ic_heart)}else{imgFav.setImageResource(R.drawable.ic_heart_empty)}
 
         imgMain.setOnClickListener {
            changeFrag()
         }
-        imgFav.setOnClickListener {
 
+        imgFav.setOnClickListener {
+            if(imageList[counter].status){
+                imageList[counter].status=FALSE
+                imgFav.setImageResource(R.drawable.ic_heart_empty)
+            }else{
+                imageList[counter].status=TRUE
+                imgFav.setImageResource(R.drawable.ic_heart)
+            }
+            saveList()
         }
+    }
+
+    fun saveList(){
+        (activity as MainActivity).saveSharedPref(imageList)
     }
 
     fun changeFrag(){
         val frag=ImageFragment.newInstance()
         (activity as MainActivity).replaceFragment(frag,ImageFragment.TAG)
-    }
-    override fun onStop() {
-        super.onStop()
     }
 
     override fun onDestroy() {

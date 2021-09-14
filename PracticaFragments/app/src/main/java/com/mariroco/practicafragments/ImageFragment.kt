@@ -37,6 +37,10 @@ class ImageFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_image, container, false)
     }
 
+    fun initView(){
+
+    }
+
     companion object {
         val TAG = ImageFragment::class.java.simpleName
         @JvmStatic

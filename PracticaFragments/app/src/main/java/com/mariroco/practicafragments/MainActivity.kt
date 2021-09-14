@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnInfo: Button
     private lateinit var containerMain : ConstraintLayout
     private lateinit var containerFrag : FrameLayout
-    private lateinit var imageList: List<Image>
+    lateinit var imageList: List<Image>
     var counter : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,24 +82,27 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.container, fragment, tag).addToBackStack("DetailFragment").commit()
     }
 
-    fun saveStatus(images: List<Image>){
+    fun saveSharedPref(images: List<Image>){
         val prefEditor = PreferenceManager.getDefaultSharedPreferences(this).edit()
         val jsonString = Gson().toJson(images)
         prefEditor.putString("images",jsonString).apply()
     }
 
     private fun getSharedPref(): List<Image> {
+        val gson = Gson()
+        val myType = object : TypeToken<List<Image>>() {}.type
+
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
         val jsonString = preferences.getString("images", null)
         return if(jsonString!=null){
-            Gson().fromJson(jsonString,listOf<Image>().javaClass)
+            gson.fromJson(jsonString, myType)
         }else{
             listOf(
-                Image((R.drawable.uno),"1",false),
-                Image((R.drawable.dos),"2",false),
-                Image((R.drawable.tres),"3",false),
-                Image((R.drawable.cuatro),"4",false),
-                Image((R.drawable.cinco),"5",false)
+                Image((R.drawable.uno),"numbuh 1",false),
+                Image((R.drawable.dos),"numbuh 2",false),
+                Image((R.drawable.tres),"numbuh 3",false),
+                Image((R.drawable.cuatro),"numbuh 4",false),
+                Image((R.drawable.cinco),"numbuh 5",false)
             )
         }
     }
