@@ -1,5 +1,6 @@
 package com.mariroco.practicafragments
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnInfo: Button
     private lateinit var containerMain : ConstraintLayout
     private lateinit var containerFrag : FrameLayout
+    private var mp: MediaPlayer? = null
     lateinit var imageList: List<Image>
     var counter : Int = 0
 
@@ -70,9 +72,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeImage(){
+        mp?.stop()
         when(counter){
-            -1 -> counter = 4
-            5 -> counter = 0
+            -1 -> {
+                counter = 4
+                playSound(R.raw.cinco)
+            }
+            0-> playSound(R.raw.uno)
+            1-> playSound(R.raw.dos)
+            2-> playSound(R.raw.tres)
+            3-> playSound(R.raw.cuatro)
+            4-> playSound(R.raw.cinco)
+            5 -> {
+                counter = 0
+                playSound(R.raw.uno)}
         }
         imgvImage.setImageResource(imageList[counter].image)
     }
@@ -86,6 +99,11 @@ class MainActivity : AppCompatActivity() {
         val prefEditor = PreferenceManager.getDefaultSharedPreferences(this).edit()
         val jsonString = Gson().toJson(images)
         prefEditor.putString("images",jsonString).apply()
+    }
+
+    fun playSound(sound:Int){
+        mp=MediaPlayer.create(this,sound)
+        with(mp) { this?.start() }
     }
 
     private fun getSharedPref(): List<Image> {
