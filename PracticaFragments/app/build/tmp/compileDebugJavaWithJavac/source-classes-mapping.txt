@@ -1,0 +1,2 @@
+com/mariroco/practicafragments/BuildConfig.java
+ com.mariroco.practicafragments.BuildConfig
