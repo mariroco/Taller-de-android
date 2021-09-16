@@ -13,11 +13,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7ddb6e2-49b7-4e59-859a-aec92c6cfb3a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/ArticleGallery.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/UserProfile.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_article_gallery.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_user_profile.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/AppExamen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/EditorArticle.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/Preferences.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/ReaderArticle.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/fragment_editor_article.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/fragment_reader.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppExamen/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppExamen/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/ArticleGallery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/ArticleGallery.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/UserProfile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/UserProfile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_article_gallery.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_article_gallery.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_user_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_user_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/mariroco/practicafragments/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/mariroco/practicafragments/MainActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +64,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Taller-de-android-Practica-Fragments/PracticaFragments" />
   </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">

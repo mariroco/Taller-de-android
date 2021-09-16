@@ -95,18 +95,17 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.container, fragment, tag).addToBackStack("DetailFragment").commit()
     }
 
-
+    fun saveSharedPref(images: List<Image>){
+        val prefEditor = PreferenceManager.getDefaultSharedPreferences(this).edit()
+        val jsonString = Gson().toJson(images)
+        prefEditor.putString("images",jsonString).apply()
+    }
 
     fun playSound(sound:Int){
         mp=MediaPlayer.create(this,sound)
         with(mp) { this?.start() }
     }
 
-    fun saveSharedPref(images: List<Image>){
-        val prefEditor = PreferenceManager.getDefaultSharedPreferences(this).edit()
-        val jsonString = Gson().toJson(images)
-        prefEditor.putString("images",jsonString).apply()
-    }
     private fun getSharedPref(): List<Image> {
         val gson = Gson()
         val myType = object : TypeToken<List<Image>>() {}.type
