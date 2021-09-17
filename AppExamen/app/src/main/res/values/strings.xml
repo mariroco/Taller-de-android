@@ -23,4 +23,5 @@
     <string name="txt_userWriter">Writer type</string>
     <string name="txt_writtenArticles">%1$s written articles</string>
     <string name="txt_heartedArticles">%1$s hearted articles</string>
+    <string name="txt_addArticle">Write new article</string>
 </resources>
