@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.preference.PreferenceManager
 import android.view.View.*
+import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.Boolean.FALSE
@@ -98,10 +99,10 @@ class UserProfile : AppCompatActivity() {
         ArticleList = getSharedPref()
         txtUsername.setText(AppExamen.usersPref.getReader())
         txtUserType.setText(getString(R.string.txt_userReader))
-
         imgUser.setImageResource(R.drawable.ic_reader)
         imgAdd.visibility = GONE
         if(utype){//If the user is a Reader
+            updateFavCounter()
             if(ArticleList.size<=1){
                 txtTitle.setText(getString(R.string.txt_nothingHere))
                 imgFavDel.visibility = INVISIBLE
@@ -136,14 +137,17 @@ class UserProfile : AppCompatActivity() {
             txtUserType.setText(getString(R.string.txt_userWriter)).toString()
             txtNum.setText(getString(R.string.txt_writtenArticles,(ArticleList.size).toString()))
             imgUser.setImageResource(R.drawable.ic_writer)
-            imgAdd.visibility= INVISIBLE
+            if(ArticleList.size>=1){
+            imgAdd.visibility= INVISIBLE}else{imgAdd.visibility= VISIBLE}
             //Click to delete
             imgFavDel.setOnClickListener {
                 ArticleList.removeAt(counter)
                 saveSharedPref(ArticleList)
                 counter=0
                 loadViewType()
+                Toast.makeText(this,(R.string.txt_articleDeleted), Toast.LENGTH_LONG).show()
                 loadArticles()
+
             }
             imgAdd.setOnClickListener{
                 //Activity with new article form
@@ -170,7 +174,7 @@ class UserProfile : AppCompatActivity() {
     private fun loadArticles(){
         ArticleList = getSharedPref()
         if(ArticleList.size<1){
-            txtTitle.setText(getString(R.string.txt_nothingHere))
+            txtTitle.setText(getString(R.string.txt_addArticle))
             imgMain.visibility = INVISIBLE
             if(utype && ArticleList.size==1){
                 imgNext.visibility = INVISIBLE
