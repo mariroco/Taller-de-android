@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,(R.string.txt_wrongCredentials),Toast.LENGTH_LONG).show()
             }
         }
-        loadProfile(TRUE)
 
     }
 

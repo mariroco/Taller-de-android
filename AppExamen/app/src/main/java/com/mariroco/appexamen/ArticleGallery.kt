@@ -43,6 +43,13 @@ class ArticleGallery : AppCompatActivity() {
             edtxtContent.isEnabled = FALSE
             imgSiquiente.visibility = INVISIBLE
             imgAnterior.visibility = INVISIBLE
+            imgFav.setOnClickListener {
+                if(ArticleList[currentArticleId!!].Status){
+                    setHeart(FALSE)
+                }else{
+                    setHeart(TRUE)
+                }
+            }
         }else{
             edtxtTitle.isEnabled = TRUE
             edtxtContent.isEnabled = TRUE
@@ -193,10 +200,14 @@ class ArticleGallery : AppCompatActivity() {
     private fun setHeart(status:Boolean){
         if (status){
             imgFav.setImageResource(R.drawable.ic_heart)
+            ArticleList[counter].Status= TRUE
         }else{
             imgFav.setImageResource(R.drawable.ic_heart_empty)
+            ArticleList[counter].Status= FALSE
         }
+        saveSharedPref(ArticleList)
     }
+
 
     fun setImgCounter(){
         when(counter){

@@ -86,37 +86,57 @@ class UserProfile : AppCompatActivity() {
 
     }
 
+    private fun updateFavCounter(){
+        favCounter=0
+        ArticleList.forEach{ article ->
+            if(article.Status){ favCounter++ }
+        }
+        txtNum.setText(getString(R.string.txt_heartedArticles,favCounter.toString()))
+    }
+
     private fun loadViewType() {
         ArticleList = getSharedPref()
+        txtUsername.setText(AppExamen.usersPref.getReader())
+        txtUserType.setText(getString(R.string.txt_userReader))
+
+        imgUser.setImageResource(R.drawable.ic_reader)
+        imgAdd.visibility = GONE
         if(utype){//If the user is a Reader
-            setHeart(FALSE)
-            imgAdd.visibility = GONE
-            txtUsername.setText("Reader")
-            txtUserType.setText(getString(R.string.txt_userReader))
-            imgUser.setImageResource(R.drawable.ic_reader)
-            ArticleList.forEach{ article ->
-                if(article.Status){
-                    favCounter++
-                }
+            if(ArticleList.size<=1){
+                txtTitle.setText(getString(R.string.txt_nothingHere))
+                imgFavDel.visibility = INVISIBLE
+                if(ArticleList.size==1){
+                    setArticle()
+                    imgFavDel.visibility= VISIBLE}
+                imgNext.visibility= INVISIBLE
+                imgPrevious.visibility = INVISIBLE
+
+            }else{
+                setArticle()
             }
-            txtNum.setText(getString(R.string.txt_heartedArticles,favCounter.toString()))
-            //Click to heart
+            imgNext.setOnClickListener {
+                counter++
+                setImgCounter()
+            }
+            imgPrevious.setOnClickListener {
+                counter--
+                setImgCounter()
+            }
             imgFavDel.setOnClickListener {
                 if(ArticleList[counter].Status){
-                    ArticleList[counter].Status=FALSE
                     setHeart(FALSE)
                 }else{
-                    ArticleList[counter].Status=TRUE
                     setHeart(TRUE)
                 }
             }
+
         }else{//If the user is a Writer
             imgFavDel.setImageResource(R.drawable.ic_delete)
-            txtUsername.setText("Writer")
+            txtUsername.setText(AppExamen.usersPref.getWriter())
             txtUserType.setText(getString(R.string.txt_userWriter)).toString()
             txtNum.setText(getString(R.string.txt_writtenArticles,(ArticleList.size).toString()))
             imgUser.setImageResource(R.drawable.ic_writer)
-
+            imgAdd.visibility= INVISIBLE
             //Click to delete
             imgFavDel.setOnClickListener {
                 ArticleList.removeAt(counter)
@@ -188,9 +208,13 @@ class UserProfile : AppCompatActivity() {
     private fun setHeart(status:Boolean){
         if (status){
             imgFavDel.setImageResource(R.drawable.ic_heart)
+            ArticleList[counter].Status= TRUE
         }else{
             imgFavDel.setImageResource(R.drawable.ic_heart_empty)
+            ArticleList[counter].Status= FALSE
         }
+        saveSharedPref(ArticleList)
+        updateFavCounter()
     }
 
     fun saveSharedPref(articles: List<Article>){
@@ -214,28 +238,35 @@ class UserProfile : AppCompatActivity() {
 
     fun setImgCounter(){
         ArticleList = getSharedPref()
-        when(counter){
-            -2 -> {
-                counter= ArticleList.size-1
-                imgMain.visibility= VISIBLE
-                imgAdd.visibility=INVISIBLE
-                imgFavDel.visibility= VISIBLE
+        if(utype){
+            when(counter){
+                -1 ->counter = ArticleList.size-1
+                ArticleList.size -> counter=0
             }
-            -1 ->{
-                imgMain.visibility= INVISIBLE
-                imgAdd.visibility=VISIBLE
-                imgFavDel.visibility= INVISIBLE
-                txtTitle.setText(getString(R.string.txt_addArticle))
-            }
-            0->imgFavDel.visibility= VISIBLE
+        }else {
+            when (counter) {
+                -2 -> {
+                    counter = ArticleList.size - 1
+                    imgMain.visibility = VISIBLE
+                    imgAdd.visibility = INVISIBLE
+                    imgFavDel.visibility = VISIBLE
+                }
+                -1 -> {
+                    imgMain.visibility = INVISIBLE
+                    imgAdd.visibility = VISIBLE
+                    imgFavDel.visibility = INVISIBLE
+                    txtTitle.setText(getString(R.string.txt_addArticle))
+                }
+                0 -> imgFavDel.visibility = VISIBLE
 
 
-            ArticleList.size -> {
-                counter=-1
-                imgMain.visibility= INVISIBLE
-                imgAdd.visibility=VISIBLE
-                imgFavDel.visibility= INVISIBLE
-                txtTitle.setText(getString(R.string.txt_addArticle))
+                ArticleList.size -> {
+                    counter = -1
+                    imgMain.visibility = INVISIBLE
+                    imgAdd.visibility = VISIBLE
+                    imgFavDel.visibility = INVISIBLE
+                    txtTitle.setText(getString(R.string.txt_addArticle))
+                }
             }
         }
         if(counter!=-1){
