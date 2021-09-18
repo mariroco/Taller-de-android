@@ -5,33 +5,11 @@
       <config />
     </shared>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7ddb6e2-49b7-4e59-859a-aec92c6cfb3a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/AppExamen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/EditorArticle.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/Preferences.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/ReaderArticle.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/fragment_editor_article.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/fragment_reader.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppExamen/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppExamen/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/ArticleGallery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/ArticleGallery.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/UserProfile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/java/com/mariroco/appexamen/UserProfile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_article_gallery.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_article_gallery.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_user_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/layout/activity_user_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppExamen/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AppExamen/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/mariroco/practicafragments/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/mariroco/practicafragments/MainActivity.kt" afterDir="false" />
-    </list>
+    <list default="true" id="7cb09723-0db7-46d1-86af-5a8b68c11eac" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,18 +21,7 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-        <option value="Kotlin Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="ProjectId" id="1y5alFDM0EHidbxWBAWf1ut0nIe" />
+  <component name="ProjectId" id="1yC0JZ9cWWtnvHVcF9u7fbI8qUq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -63,11 +30,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Taller-de-android-Practica-Fragments/PracticaFragments" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="PracticaFragments.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -129,24 +96,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f7ddb6e2-49b7-4e59-859a-aec92c6cfb3a" name="Default Changelist" comment="" />
-      <created>1631544054010</created>
+      <changelist id="7cb09723-0db7-46d1-86af-5a8b68c11eac" name="Default Changelist" comment="" />
+      <created>1631740192862</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1631544054010</updated>
+      <updated>1631740192862</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
