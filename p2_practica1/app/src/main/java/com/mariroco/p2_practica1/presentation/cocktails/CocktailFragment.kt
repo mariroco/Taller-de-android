@@ -68,20 +68,7 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
 
         binding.lifecycleOwner = this
 
-        binding.svCocktail.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-            OnQueryTextListener {
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                if(p0!==null)
-                    setCocktails(p0)
-                return true
-            }
-
-            override fun onQueryTextChange(p0: String?): Boolean {
-                if(p0!==null)
-                    setCocktails(p0)
-                return false
-            }
-        })
+        
     }
 
 
