@@ -2,7 +2,7 @@ package com.mariroco.p2_practica1.core.di
 
 import android.content.Context
 import com.mariroco.p2_practica1.core.platform.NetworkHandler
-import com.mariroco.p2_practica1.framework.ApiProvider
+import com.mariroco.p2_practica1.framework.api.ApiProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

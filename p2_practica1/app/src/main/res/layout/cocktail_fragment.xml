@@ -8,10 +8,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/fabViewChange"
+            app:icon="@drawable/ic_baseline_compare_arrows_24"
+            app:iconTint="@color/coral_572"
+            android:backgroundTint="@color/cardview_light_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="15dp"/>
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/svCocktail"
             android:layout_width="0dp"
+            app:iconifiedByDefault="false"
+            app:defaultQueryHint="@string/txt_cocktails"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +43,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="10"
                 tools:listitem="@layout/row_cocktail" />
+
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.cocktails.CocktailFragment"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.mariroco.p2_practica1.domain.model.Cocktail" />
+    </data>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+            <ImageView
+                android:id="@+id/imgCocktail"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadFromUrl="@{item.urlThumb}"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/txvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{item.name}"
+                android:ellipsize="end"
+                android:lines="1"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/imgFavorite"
+                app:layout_constraintStart_toStartOf="@id/imgCocktail"
+                app:layout_constraintEnd_toEndOf="@id/imgCocktail"
+                tools:text="Cerveza" />
+
+            <TextView
+                android:id="@+id/txvCategory"
+                android:textSize="10dp"
+                android:layout_width="0dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:layout_height="wrap_content"
+                android:text="@{item.catergory}"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/txvName"
+                app:layout_constraintStart_toStartOf="@id/imgCocktail"
+                app:layout_constraintEnd_toEndOf="@id/imgCocktail"
+                tools:text="Category" />
+
+            <ImageView
+                android:id="@+id/imgFavorite"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_unfavorite"
+                app:layout_constraintTop_toBottomOf="@id/imgCocktail"
+                app:layout_constraintEnd_toEndOf="@id/imgCocktail"
+                app:layout_constraintStart_toStartOf="@id/imgCocktail"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

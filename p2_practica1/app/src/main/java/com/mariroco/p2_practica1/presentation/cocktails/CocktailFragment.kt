@@ -1,5 +1,6 @@
 package com.mariroco.p2_practica1.presentation.cocktails
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
@@ -13,6 +14,10 @@ import com.mariroco.p2_practica1.core.presentation.BaseViewState
 import com.mariroco.p2_practica1.databinding.CocktailFragmentBinding
 import com.mariroco.p2_practica1.domain.model.Cocktail
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.mariroco.p2_practica1.core.utils.LayoutType
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -26,6 +31,8 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
 
     private lateinit var adapter: CocktailAdapter
     private val cocktailViewModel by viewModels<CocktailViewModel>()
+    var newLayout = LayoutType.LINEAR
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +68,8 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
         binding.rcCocktails.apply {
             adapter = this@CocktailFragment.adapter
         }
+
+        adapter.viewChange(newLayout)
     }
 
     override fun setBinding(view: View) {
@@ -68,8 +77,34 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
 
         binding.lifecycleOwner = this
 
-        
+        binding.svCocktail.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                if(p0!==null)
+                    setCocktails(p0)
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                if(p0!==null)
+                    setCocktails(p0)
+                return true
+            }
+        })
+
+        binding.fabViewChange.setOnClickListener{
+             newLayout = if(adapter.layoutType == LayoutType.LINEAR){
+                binding.rcCocktails.layoutManager = GridLayoutManager(requireContext(),3)
+                LayoutType.GRID
+            }
+            else{
+                binding.rcCocktails.layoutManager = LinearLayoutManager(requireContext())
+                LayoutType.LINEAR
+            }
+            adapter.viewChange(newLayout)
+        }
     }
+
 
 
 

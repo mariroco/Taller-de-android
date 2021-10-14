@@ -38,7 +38,7 @@ abstract  class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), OnF
             is Failure.FeatureFailure ->{}
             is Failure.NetworkConnection->{}
             is Failure.ServerError -> {
-                //showToast(failure.serverMessage ?: "")
+                showToast(failure.serverMessage ?: "")
             }
             is Failure.Unauthorized -> {}
             null ->{}
