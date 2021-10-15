@@ -5,4 +5,5 @@
     <string name="txt_account">My account</string>
 
     <string name="failure_response">Error al consultar al servidor</string>
+    <string name="txt_noData">There is no data available</string>
 </resources>

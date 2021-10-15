@@ -14,6 +14,7 @@ import com.mariroco.p2_practica1.core.presentation.BaseViewState
 import com.mariroco.p2_practica1.databinding.CocktailFragmentBinding
 import com.mariroco.p2_practica1.domain.model.Cocktail
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -48,6 +49,8 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
             failure(failure, ::handleFailure)
             doGetCocktailsByName(name)
 
+
+
         }
     }
 
@@ -61,11 +64,13 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
 
 
     private fun setUpAdapter(cocktails: List<Cocktail>) {
+        binding.nodataView.isVisible = cocktails.isEmpty()
         adapter = CocktailAdapter()
 
         adapter.addData(cocktails)
 
         binding.rcCocktails.apply {
+            isVisible = cocktails.isNotEmpty()
             adapter = this@CocktailFragment.adapter
         }
 

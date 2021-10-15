@@ -6,9 +6,15 @@ import coil.load
 import coil.transform.CircleCropTransformation
 import com.mariroco.p2_practica1.R
 
+@BindingAdapter("loadFromUrlCircular")
+fun ImageView.loadFromURLCircular(url: String) = this.load(url) {
+    crossfade(true)
+    placeholder(R.drawable.ic_cocktail)
+    transformations(CircleCropTransformation())
+}
+
 @BindingAdapter("loadFromUrl")
 fun ImageView.loadFromURL(url: String) = this.load(url) {
     crossfade(true)
     placeholder(R.drawable.ic_cocktail)
-    transformations(CircleCropTransformation())
 }

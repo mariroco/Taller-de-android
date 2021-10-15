@@ -9,10 +9,19 @@
         android:id="@+id/cocktailFragment"
         android:name="com.mariroco.p2_practica1.presentation.cocktails.CocktailFragment"
         android:label="cocktail_fragment"
-        tools:layout="@layout/cocktail_fragment" />
+        tools:layout="@layout/cocktail_fragment" >
+        <action
+            android:id="@+id/action_cocktailFragment_to_cocktailDetailFragment"
+            app:destination="@id/cocktailDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.mariroco.p2_practica1.presentation.favorites.FavoriteFragment"
         android:label="favorite_fragment"
         tools:layout="@layout/favorite_fragment" />
+    <fragment
+        android:id="@+id/cocktailDetailFragment"
+        android:name="com.mariroco.p2_practica1.presentation.detailCocktail.CocktailDetailFragment"
+        android:label="cocktail_detail_fragment"
+        tools:layout="@layout/cocktail_detail_fragment" />
 </navigation>

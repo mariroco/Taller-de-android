@@ -15,12 +15,13 @@
             android:layout_marginBottom="5dp">
             <ImageView
                 android:id="@+id/imgCocktail"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:loadFromUrl="@{item.urlThumb}"
+                app:loadFromUrlCircular="@{item.urlThumb}"
                 tools:src="@tools:sample/avatars" />
 
             <TextView
