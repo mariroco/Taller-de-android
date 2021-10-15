@@ -39,8 +39,6 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
         super.onCreate(savedInstanceState)
         //Conecta con el viewmodel y obtiene lista de cocteles
         setCocktails("")
-
-
     }
 
     private fun  setCocktails(name: String){
@@ -48,14 +46,19 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
             observe(state, ::onViewStateChanged)
             failure(failure, ::handleFailure)
             doGetCocktailsByName(name)
-
-
-
         }
     }
 
     override fun onViewStateChanged(state: BaseViewState?) {
         super.onViewStateChanged(state)
+
+            /*
+            // * * *
+            adapter.listener = object : Listener {
+            override fun onClickRow(data: Cocktail) {
+                //El método onclickRow se ejecuta cuando hacemos click en un cocktail
+            }
+        }*/
         when (state) {
             is CocktailViewState.CocktailsReceived -> setUpAdapter(state.cocktails)
         }
@@ -66,6 +69,12 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
     private fun setUpAdapter(cocktails: List<Cocktail>) {
         binding.nodataView.isVisible = cocktails.isEmpty()
         adapter = CocktailAdapter()
+
+        adapter.addData(cocktails)
+        adapter.listener = {
+            //navegamos hacía el cocktail detail cuando hacemos click en un cocktail
+            navController.navigate(CocktailFragmentDirections.actionCocktailFragmentToCocktailDetailFragment(it))
+        }
 
         adapter.addData(cocktails)
 

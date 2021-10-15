@@ -2,20 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/cocktails"
+        android:id="@+id/cocktailFragment"
         android:icon="@drawable/ic_cocktail"
         android:orderInCategory="1"
         android:title="@string/txt_cocktails"
         app:showAsAction="always"
         />
     <item
-        android:id="@+id/favorites"
+        android:id="@+id/favoriteFragment"
         android:icon="@drawable/ic_favorite"
         android:orderInCategory="2"
         android:title="@string/txt_favorite"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/account"
+        android:id="@+id/accountFragment"
         android:icon="@drawable/ic_account"
         android:orderInCategory="3"
         android:title="@string/txt_account"

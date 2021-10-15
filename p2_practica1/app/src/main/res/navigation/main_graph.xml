@@ -12,7 +12,11 @@
         tools:layout="@layout/cocktail_fragment" >
         <action
             android:id="@+id/action_cocktailFragment_to_cocktailDetailFragment"
-            app:destination="@id/cocktailDetailFragment" />
+            app:destination="@id/cocktailDetailFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -23,5 +27,23 @@
         android:id="@+id/cocktailDetailFragment"
         android:name="com.mariroco.p2_practica1.presentation.detailCocktail.CocktailDetailFragment"
         android:label="cocktail_detail_fragment"
-        tools:layout="@layout/cocktail_detail_fragment" />
+        tools:layout="@layout/cocktail_detail_fragment" >
+        <argument
+            android:name="cocktail"
+            app:argType="com.mariroco.p2_practica1.domain.model.Cocktail" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.mariroco.p2_practica1.presentation.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.mariroco.p2_practica1.presentation.account.AccountFragment"
+        android:label="account_fragment"
+        tools:layout="@layout/account_fragment" >
+        <action
+            android:id="@+id/action_accountFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
