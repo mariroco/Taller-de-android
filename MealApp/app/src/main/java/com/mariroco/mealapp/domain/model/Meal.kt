@@ -18,7 +18,8 @@ class Meal(
     @Json(name="strCategory") val category: String="",
     @Json(name="strMealThumb") val urlThumb:  String? = "",
     @Json(name="strArea") val area: String = "",
-    @Json(name = "strInstructions") val instructions: String?=""
+    @Json(name = "strInstructions") val recipe: String?=""
 
 ):Parcelable {
+    val ingredients : String =""
 }

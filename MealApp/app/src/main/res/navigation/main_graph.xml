@@ -9,7 +9,11 @@
         android:id="@+id/mealsFragment"
         android:name="com.mariroco.mealapp.presentation.meals.MealsFragment"
         android:label="meals_fragment"
-        tools:layout="@layout/meals_fragment" />
+        tools:layout="@layout/meals_fragment" >
+        <action
+            android:id="@+id/action_mealsFragment_to_mealDetailFragment"
+            app:destination="@id/mealDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/randomFragment"
         android:name="com.mariroco.mealapp.presentation.randomMeals.RandomFragment"
@@ -20,4 +24,9 @@
         android:name="com.mariroco.mealapp.presentation.profile.ProfileFragment"
         android:label="profile_fragment"
         tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/mealDetailFragment"
+        android:name="com.mariroco.mealapp.presentation.mealDetail.mealDetailFragment"
+        android:label="meal_detail_fragment"
+        tools:layout="@layout/meal_detail_fragment" />
 </navigation>
