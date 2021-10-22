@@ -3,4 +3,5 @@
     <string name="meals">Meals</string>
     <string name="random">Random</string>
     <string name="profile">Profile</string>
+    <string name="txt_noData">No meals available</string>
 </resources>
