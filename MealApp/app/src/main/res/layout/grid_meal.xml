@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+        <data>
+        <variable
+            name="meal"
+            type="com.mariroco.mealapp.domain.model.Meal" />
+        </data>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/imgMeal"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@{meal.urlThumb}"
+                    tools:src="@tools:sample/avatars"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/txvName"
+                    android:layout_width="0dp"
+                    android:text="@{meal.name}"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:textAlignment="center"
+                    app:layout_constraintTop_toBottomOf="@id/imgMeal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/imgMeal"
+                    tools:text="Meal name"/>
+
+                <TextView
+                    android:id="@+id/txvCategory"
+                    android:layout_width="0dp"
+                    android:text="@{meal.category}"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/txvName"
+                    app:layout_constraintStart_toStartOf="@id/txvName"
+                    app:layout_constraintEnd_toEndOf="@id/txvName"
+                    android:textSize="15dp"
+                    tools:text="Meal category"
+                    />
+                <ImageView
+                    android:id="@+id/imgLocation"
+                    android:src="@drawable/ic_location"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:layout_constraintStart_toStartOf="@id/txvName"
+                    app:layout_constraintTop_toBottomOf="@id/txvCategory"/>
+                <TextView
+                    android:id="@+id/txvArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{meal.area}"
+                    app:layout_constraintStart_toEndOf="@id/imgLocation"
+                    app:layout_constraintBottom_toBottomOf="@id/imgLocation"
+
+                    tools:text="Area"
+                    />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_unliked"
+                    app:layout_constraintEnd_toEndOf="@id/imgMeal"
+                    app:layout_constraintTop_toTopOf="@id/imgMeal"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+    </layout>
