@@ -8,16 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import com.mariroco.mealapp.R
 import com.mariroco.mealapp.core.presentation.BaseFragment
+import com.mariroco.mealapp.databinding.MealsFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
 import kotlinx.coroutines.DelicateCoroutinesApi
 
-@AndroidEntryPoint
-@WithFragmentBindings
-@DelicateCoroutinesApi
+
 class MealsFragment : BaseFragment(R.layout.meals_fragment) {
+    private lateinit var binding: MealsFragmentBinding
+
     override fun setBinding(view: View) {
-        TODO("Not yet implemented")
+        binding = MealsFragmentBinding.bind(view)
     }
 
 

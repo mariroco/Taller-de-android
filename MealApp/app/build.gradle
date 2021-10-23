@@ -82,8 +82,8 @@ dependencies {
     kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.12.0'
 
     //Hilt
-    implementation 'com.google.dagger:hilt-android:2.38.1'
-    kapt 'com.google.dagger:hilt-compiler:2.38.1'
+    implementation 'com.google.dagger:hilt-android:2.39.1'
+    kapt 'com.google.dagger:hilt-compiler:2.39.1'
 
     //ViewModel and live data
     def lifecycle_version = "2.4.0-beta01"
@@ -131,7 +131,4 @@ dependencies {
 
 kapt {
     correctErrorTypes true
-    javacOptions {
-        option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
-    }
 }

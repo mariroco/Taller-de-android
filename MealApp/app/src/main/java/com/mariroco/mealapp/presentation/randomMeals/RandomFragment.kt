@@ -10,7 +10,6 @@ import com.mariroco.mealapp.R
 import com.mariroco.mealapp.core.presentation.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class RandomFragment : BaseFragment(R.layout.random_fragment) {
     override fun setBinding(view: View) {
         TODO("Not yet implemented")
