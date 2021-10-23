@@ -7,6 +7,7 @@ plugins {
 
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
+
 }
 
 android {
@@ -130,4 +131,7 @@ dependencies {
 
 kapt {
     correctErrorTypes true
+    javacOptions {
+        option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
+    }
 }
