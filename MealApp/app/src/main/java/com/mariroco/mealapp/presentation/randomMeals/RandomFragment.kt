@@ -8,11 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.mariroco.mealapp.R
 import com.mariroco.mealapp.core.presentation.BaseFragment
+import com.mariroco.mealapp.databinding.MealDetailFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-class RandomFragment : BaseFragment(R.layout.random_fragment) {
+class RandomFragment : BaseFragment(R.layout.meal_detail_fragment) {
+
+    private lateinit var binding: MealDetailFragmentBinding
+
+
     override fun setBinding(view: View) {
-        TODO("Not yet implemented")
+        binding = MealDetailFragmentBinding.bind(view)
     }
 
 

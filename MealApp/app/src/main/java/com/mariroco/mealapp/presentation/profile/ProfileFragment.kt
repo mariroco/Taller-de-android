@@ -12,8 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 class ProfileFragment : BaseFragment(R.layout.profile_fragment) {
     override fun setBinding(view: View) {
-        TODO("Not yet implemented")
     }
-
 
 }
