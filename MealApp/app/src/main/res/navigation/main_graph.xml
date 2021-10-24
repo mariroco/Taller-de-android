@@ -28,5 +28,9 @@
         android:id="@+id/mealDetailFragment"
         android:name="com.mariroco.mealapp.presentation.mealDetail.mealDetailFragment"
         android:label="meal_detail_fragment"
-        tools:layout="@layout/meal_detail_fragment" />
+        tools:layout="@layout/meal_detail_fragment" >
+        <argument
+            android:name="meal"
+            app:argType="com.mariroco.mealapp.domain.model"/>
+    </fragment>
 </navigation>
