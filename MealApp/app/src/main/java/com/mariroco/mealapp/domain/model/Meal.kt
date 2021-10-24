@@ -20,5 +20,6 @@ class Meal(
     @Json(name = "strInstructions") val recipe: String?=""
 
 ):Parcelable {
-    val ingredients : String =""
+    val ingredients : String
+    get() = name
 }

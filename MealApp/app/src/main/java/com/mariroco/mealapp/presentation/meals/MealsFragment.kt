@@ -16,6 +16,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 
 class MealsFragment : BaseFragment(R.layout.meals_fragment) {
     private lateinit var binding: MealsFragmentBinding
+    private lateinit var adapter: MealsAdapter
 
     override fun setBinding(view: View) {
         binding = MealsFragmentBinding.bind(view)
