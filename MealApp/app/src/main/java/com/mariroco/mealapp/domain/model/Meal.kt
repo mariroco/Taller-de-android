@@ -16,6 +16,7 @@ class Meal(
     @Json(name = "strMeal") val name: String = "",
     @Json(name = "strCategory") val category: String = "",
     @Json(name = "strMealThumb") val urlThumb: String? = "",
+    @Json(name = "strImageSource") val url: String? = "",
     @Json(name = "strArea") val area: String = "",
     @Json(name = "strInstructions") val recipe: String? = "",
 
@@ -74,5 +75,8 @@ class Meal(
             return (temp)
         }
     //get() = ing.toString()
+    val urlDetail: String
+        get() = (url ?: urlThumb) as String
+
 }
 

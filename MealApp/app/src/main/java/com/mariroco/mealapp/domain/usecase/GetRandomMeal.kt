@@ -12,8 +12,9 @@ import javax.inject.Inject
 class GetRandomMeal @Inject constructor(private val mealRepository: MealRepository):
     UseCase<MealsResponse,Boolean>(){
     override suspend fun run(params: Boolean): Either<Failure, MealsResponse> {
-        //hasta aquí también funcion
-        return mealRepository.getRandomMeal()
+        //hasta aquí también funciona
+        var k = mealRepository.getRandomMeal()
+        return k
     }
 
 }
