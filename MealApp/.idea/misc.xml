@@ -5,10 +5,11 @@
       <map>
         <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/drawable/ic_arrows.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/drawable/ic_meal.xml" value="0.33" />
         <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/drawable/ic_random.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/layout/activity_main.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/layout/grid_meal.xml" value="0.33" />
-        <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/layout/meal_detail_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/layout/meal_detail_fragment.xml" value="0.2938689217758985" />
         <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/layout/meals_fragment.xml" value="0.33" />
         <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/layout/nodata_view.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/layout/profile_fragment.xml" value="0.20520833333333333" />
@@ -16,6 +17,7 @@
         <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/layout/random_fragment.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/layout/row_meal.xml" value="0.33" />
         <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/menu/main_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Marie/Documents/GitHub/Taller-de-android/MealApp/app/src/main/res/xml/network_security_config.xml" value="0.19375" />
       </map>
     </option>
   </component>

@@ -10,13 +10,13 @@
     <item
         android:id="@+id/randomFragment"
         android:icon="@drawable/ic_random"
-        android:orderInCategory="1"
+        android:orderInCategory="2"
         android:title="@string/random"
         app:showAsAction="always"/>
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
-        android:orderInCategory="1"
+        android:orderInCategory="3"
         android:title="@string/profile"
         app:showAsAction="always"/>
 

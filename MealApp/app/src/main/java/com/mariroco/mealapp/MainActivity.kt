@@ -11,7 +11,9 @@ import androidx.navigation.NavController
 import androidx.navigation.ui.NavigationUI
 import com.mariroco.mealapp.core.presentation.BaseActivity
 import com.mariroco.mealapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun layoutId()=R.layout.activity_main

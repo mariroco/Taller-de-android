@@ -45,9 +45,7 @@ class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         )
     }
 
-    override fun getItemCount(): Int {
-        return list.size
-    }
+    override fun getItemCount() = list.size
 
     class ViewHolderItem(private val binding: RowMealBinding) :
         BaseViewHolder(binding.root){
@@ -72,9 +70,8 @@ class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         }
     }
 
-    abstract class BaseViewHolder(private val root: View):RecyclerView.ViewHolder(root){
-        abstract fun bind(data: Meal, listener: (meal: Meal) -> Unit)
-    }
+}
 
-
+abstract class BaseViewHolder(private val root: View): RecyclerView.ViewHolder(root){
+    abstract fun bind(data: Meal, listener: (meal: Meal) -> Unit)
 }

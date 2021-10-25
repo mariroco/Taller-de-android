@@ -13,13 +13,12 @@
         android:layout_margin="5dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_margin="10dp"
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/imgMeal"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@{meal.urlThumb}"
+                loadFromUrl="@{meal.urlThumb}"
                 tools:src="@tools:sample/avatars"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

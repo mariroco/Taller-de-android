@@ -26,11 +26,11 @@
         tools:layout="@layout/profile_fragment" />
     <fragment
         android:id="@+id/mealDetailFragment"
-        android:name="com.mariroco.mealapp.presentation.mealDetail.mealDetailFragment"
+        android:name="com.mariroco.mealapp.presentation.mealDetail.MealDetailFragment"
         android:label="meal_detail_fragment"
         tools:layout="@layout/meal_detail_fragment" >
         <argument
             android:name="meal"
-            app:argType="com.mariroco.mealapp.domain.model"/>
+            app:argType="com.mariroco.mealapp.domain.model.Meal"/>
     </fragment>
 </navigation>
