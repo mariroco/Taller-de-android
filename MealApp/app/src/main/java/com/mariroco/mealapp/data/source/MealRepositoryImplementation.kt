@@ -7,6 +7,7 @@ import com.mariroco.mealapp.data.api.MealApi
 import com.mariroco.mealapp.data.dao.MealDao
 import com.mariroco.mealapp.data.dto.CategoriesResponse
 import com.mariroco.mealapp.data.dto.MealsResponse
+import com.mariroco.mealapp.data.dto.RandomMealResponse
 import com.mariroco.mealapp.domain.model.Category
 import com.mariroco.mealapp.domain.model.Meal
 import com.mariroco.mealapp.domain.repository.MealRepository
@@ -40,6 +41,13 @@ class MealRepositoryImplementation @Inject constructor(
             else Either.Right(CategoriesResponse(localResult))
 
         }else{result}
+    }
+
+    //hasta aquí si funciona
+    override fun getRandomMeal(): Either<Failure, MealsResponse> {
+        var result = makeRequest(networkHandler,mealApi.getRandomMeal(),{it}, MealsResponse(
+            emptyList()))
+        return result
     }
 
 

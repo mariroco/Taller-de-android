@@ -7,7 +7,8 @@ import com.mariroco.mealapp.data.dto.MealsResponse
 import com.mariroco.mealapp.domain.repository.MealRepository
 import javax.inject.Inject
 
-class GetMealsByName @Inject constructor(private val mealRepository: MealRepository) : UseCase<MealsResponse,String>() {
+class GetMealsByName @Inject constructor(private val mealRepository: MealRepository) :
+    UseCase<MealsResponse,String>() {
     override suspend fun run(params: String): Either<Failure, MealsResponse> {
         return mealRepository.getMealByName(params)
     }
