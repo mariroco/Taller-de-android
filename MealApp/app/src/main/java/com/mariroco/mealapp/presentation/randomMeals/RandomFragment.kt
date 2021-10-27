@@ -37,6 +37,9 @@ class RandomFragment : BaseFragment(R.layout.meal_detail_fragment) {
     override fun setBinding(view: View) {
         binding = MealDetailFragmentBinding.bind(view)
         binding.lifecycleOwner = this
+        binding.apply {
+            item = Meal()
+        }
     }
 
     private fun setMeal(){

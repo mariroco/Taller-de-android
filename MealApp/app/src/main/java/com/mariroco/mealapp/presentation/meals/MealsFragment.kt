@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -18,6 +19,7 @@ import com.mariroco.mealapp.core.presentation.BaseFragment
 import com.mariroco.mealapp.core.presentation.BaseViewState
 import com.mariroco.mealapp.core.utils.LayoutType
 import com.mariroco.mealapp.databinding.MealsFragmentBinding
+import com.mariroco.mealapp.domain.model.Category
 import com.mariroco.mealapp.domain.model.Meal
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
@@ -37,6 +39,7 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setMeals("")
+        setCategories()
     }
 
     private fun setMeals(name: String){
@@ -75,6 +78,8 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
             }
             adapter.viewChange(newLayout)
         }
+
+
     }
 
     private fun setUpAdapter(meals: List<Meal>){
@@ -94,10 +99,32 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
         adapter.viewChange(newLayout)
     }
 
+    private fun setCategories(){
+        mealsViewModel.apply {
+            observe(state, ::onViewStateChanged)
+            failure(failure, ::handleFailure)
+            doGetCategoriesByName(true)
+        }
+    }
+
+    private fun setUpCategoriesAdapter(categoriesList: List<Category>){
+        binding.nodataView.isVisible = categoriesList.isEmpty()
+        var categories: MutableList<String> = arrayListOf()
+        var i=0
+        while(i< categoriesList.size){
+            categories.add(categoriesList[i].name)
+            i++
+        }
+
+        var categoryAdapter = ArrayAdapter<String>(this.requireContext(),android.R.layout.simple_list_item_1,categories)
+        binding.txtFilter.setAdapter(categoryAdapter)
+    }
+
     override fun onViewStateChanged(state: BaseViewState?) {
         super.onViewStateChanged(state)
         when(state){
             is MealsViewState.MealsReceived -> setUpAdapter(state.meals)
+            is MealsViewState.CategoriesReceived -> setUpCategoriesAdapter(state.categories)
         }
     }
 

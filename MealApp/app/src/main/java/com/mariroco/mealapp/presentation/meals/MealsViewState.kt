@@ -7,5 +7,5 @@ import com.mariroco.mealapp.domain.model.Meal
 class MealsViewState {
     data class RandomMealReceived(val meal:  List<Meal>):BaseViewState()
     data class MealsReceived(val meals: List<Meal>) : BaseViewState()
-    data class CategoriesReceived(val meals: List<Category>) : BaseViewState()
+    data class CategoriesReceived(val categories: List<Category>) : BaseViewState()
 }

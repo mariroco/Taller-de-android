@@ -22,6 +22,10 @@ class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         notifyDataSetChanged()
     }
 
+    fun getData() : List<Meal>{
+        return list
+    }
+
     fun viewChange(layoutType: LayoutType){
         this.layoutType = layoutType
         notifyDataSetChanged()

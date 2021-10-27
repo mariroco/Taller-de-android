@@ -6,4 +6,5 @@
     <string name="txt_noData">No meals available</string>
     <string name="ingredients">Ingredients</string>
     <string name="recipe">Recipe</string>
+    <string name="category">Category</string>
 </resources>
