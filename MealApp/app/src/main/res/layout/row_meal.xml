@@ -68,6 +68,7 @@
                 tools:text="Area"
                 />
         <ImageView
+            android:id="@+id/imgFav"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_unliked"

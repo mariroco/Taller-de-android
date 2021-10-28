@@ -96,7 +96,7 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment), AdapterView.OnItemC
     private fun setUpAdapter(meals: List<Meal>){
         binding.nodataView.isVisible = meals.isEmpty()
         adapter = MealsAdapter()
-
+        adapter.setContext(this.requireContext())
         adapter.addData(meals)
         adapter.listener = {
             navController.navigate(MealsFragmentDirections.actionMealsFragmentToMealDetailFragment(it))
@@ -155,6 +155,7 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment), AdapterView.OnItemC
         }else {
             binding.nodataView.isVisible = filteredMeals.isEmpty()
             filteredAdapter = MealsAdapter()
+            filteredAdapter.setContext(this.requireContext())
             filteredAdapter.addData(filteredMeals)
             filteredAdapter.listener = {
                 navController.navigate(
