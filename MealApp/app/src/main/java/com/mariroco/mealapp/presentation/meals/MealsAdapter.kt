@@ -22,6 +22,15 @@ class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         notifyDataSetChanged()
     }
 
+    fun filterData(filter: String) : MutableList<Meal>{
+        var filtered:MutableList<Meal> = mutableListOf()
+        list.forEach{
+            if(it.category.equals(filter)){
+                filtered.add(it) }
+        }
+        return filtered
+    }
+
     fun getData() : List<Meal>{
         return list
     }

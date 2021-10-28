@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.core.view.isVisible
@@ -29,9 +30,10 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 @AndroidEntryPoint
 @WithFragmentBindings
 @DelicateCoroutinesApi
-class MealsFragment : BaseFragment(R.layout.meals_fragment) {
+class MealsFragment : BaseFragment(R.layout.meals_fragment), AdapterView.OnItemClickListener {
     private lateinit var binding: MealsFragmentBinding
-    private lateinit var adapter: MealsAdapter
+    private var adapter: MealsAdapter= MealsAdapter()
+    private var filteredAdapter: MealsAdapter= MealsAdapter()
 
     private val mealsViewModel by viewModels<MealsViewModel>()
     var newLayout = LayoutType.LINEAR
@@ -56,17 +58,26 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
         binding.svMeal.setOnQueryTextListener(object  : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                if (p0!==null)
+                if (p0!==null) {
                     setMeals(p0)
+                    setCategories()
+                    binding.txtFilter.setSelection(0)
+                }
                 return true
             }
 
             override fun onQueryTextChange(p0: String?): Boolean {
-                if(p0!==null)
+                if(p0!==null){
                     setMeals(p0)
+                    setCategories()
+                    binding.txtFilter.setSelection(0)
+                }
                 return true
+
             }
         })
+
+
 
         binding.fabViewChange.setOnClickListener{
             newLayout = if(adapter.layoutType == LayoutType.LINEAR){
@@ -79,7 +90,7 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
             adapter.viewChange(newLayout)
         }
 
-
+        binding.txtFilter.onItemClickListener = this@MealsFragment
     }
 
     private fun setUpAdapter(meals: List<Meal>){
@@ -108,16 +119,23 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
     }
 
     private fun setUpCategoriesAdapter(categoriesList: List<Category>){
-        binding.nodataView.isVisible = categoriesList.isEmpty()
         var categories: MutableList<String> = arrayListOf()
         var i=0
+        categories.add(getResources().getString(R.string.category))
+
         while(i< categoriesList.size){
             categories.add(categoriesList[i].name)
             i++
         }
 
-        var categoryAdapter = ArrayAdapter<String>(this.requireContext(),android.R.layout.simple_list_item_1,categories)
+        var categoryAdapter = ArrayAdapter<String>(
+            this.requireContext(),
+            R.layout.list_item,
+            categories)
+
         binding.txtFilter.setAdapter(categoryAdapter)
+        //binding.txtFilter.setSelection(categoryAdapter.getPosition(getResources().getString(R.string.category)))
+        binding.txtFilter.setSelection(0)
     }
 
     override fun onViewStateChanged(state: BaseViewState?) {
@@ -125,6 +143,33 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
         when(state){
             is MealsViewState.MealsReceived -> setUpAdapter(state.meals)
             is MealsViewState.CategoriesReceived -> setUpCategoriesAdapter(state.categories)
+        }
+    }
+
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        val item = parent?.getItemAtPosition(position).toString()
+        val filteredMeals: MutableList<Meal> = adapter.filterData(item)
+        if(item.equals(getResources().getString(R.string.category)) || item.isEmpty() || item.equals(" ")){
+            setMeals("")
+            setCategories()
+        }else {
+            binding.nodataView.isVisible = filteredMeals.isEmpty()
+            filteredAdapter = MealsAdapter()
+            filteredAdapter.addData(filteredMeals)
+            filteredAdapter.listener = {
+                navController.navigate(
+                    MealsFragmentDirections.actionMealsFragmentToMealDetailFragment(
+                        it
+                    )
+                )
+            }
+
+            filteredAdapter.addData(filteredMeals)
+            binding.rcMeals.apply {
+                isVisible = filteredMeals.isNotEmpty()
+                adapter = this@MealsFragment.filteredAdapter
+            }
+            filteredAdapter.viewChange(newLayout)
         }
     }
 
