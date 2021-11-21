@@ -4,6 +4,7 @@ import androidx.room.*
 import com.mariroco.mealapp.domain.model.Meal
 import androidx.room.Query
 import com.mariroco.mealapp.domain.model.Category
+import com.mariroco.mealapp.domain.model.User
 
 
 @Dao
@@ -13,6 +14,12 @@ interface MealDao {
 
     @Query("SELECT * FROM Category")
     fun getCategories(): List<Category>
+
+    @Query("SELECT * FROM User")
+    fun getUsers(): List<User>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun saveUser(users: List<User>): List<User>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveMeals(meals: List<Meal>): List<Long>

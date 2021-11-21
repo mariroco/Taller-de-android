@@ -8,8 +8,10 @@ import com.mariroco.mealapp.data.dao.MealDao
 import com.mariroco.mealapp.data.dto.CategoriesResponse
 import com.mariroco.mealapp.data.dto.MealsResponse
 import com.mariroco.mealapp.data.dto.RandomMealResponse
+import com.mariroco.mealapp.data.dto.UsersResponse
 import com.mariroco.mealapp.domain.model.Category
 import com.mariroco.mealapp.domain.model.Meal
+import com.mariroco.mealapp.domain.model.User
 import com.mariroco.mealapp.domain.repository.MealRepository
 import com.mariroco.mealapp.framework.api.ApiRequest
 import javax.inject.Inject
@@ -26,8 +28,10 @@ class MealRepositoryImplementation @Inject constructor(
 
         return if(result.isLeft){
             val localResult = mealDao.getMealsByName("%name")
-            if (localResult.isEmpty()) result
-            else Either.Right(MealsResponse(localResult))
+            if (localResult.isEmpty())
+                result
+            else
+                Either.Right(MealsResponse(localResult))
         }else{
             result
         }
@@ -48,6 +52,17 @@ class MealRepositoryImplementation @Inject constructor(
         var result = makeRequest(networkHandler,mealApi.getRandomMeal(),{it}, MealsResponse(
             emptyList()))
         return result
+    }
+
+    override fun getUsers(): Either<Failure, UsersResponse> {
+        var result = mealDao.getUsers()
+        return Either.Right(UsersResponse(result))
+    }
+
+    override fun saveUsers(users: List<User>): Either<Failure, Boolean> {
+        val result = mealDao.saveUser(users)
+        return if (result.size ==users.size)Either.Right(true)
+        else Either.Left(Failure.DatabaseError)
     }
 
 
