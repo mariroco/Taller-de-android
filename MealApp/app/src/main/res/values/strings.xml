@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">MealApp</string>
+    <string name="meals">Meals</string>
+    <string name="random">Random</string>
+    <string name="profile">Profile</string>
+    <string name="txt_noData">No meals available</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="recipe">Recipe</string>
+    <string name="category">Category</string>
+    <string name="everything">Categories</string>
+    <string name="logout">LOGOUT</string>
+    <string name="new_account"><u>Create new account</u></string>
+    <string name="login">LOGIN</string>
+    <string name="or">or</string>
+    <string name="username">Username</string>
+    <string name="token">Token</string>
+    <string name="existing_account"><u>Login with existing account</u></string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="mail">Mail</string>
+    <string name="image_url">Image url</string>
+</resources>

@@ -10,6 +10,7 @@ import com.mariroco.p2_practica1.framework.db.CocktailDb
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.DelicateCoroutinesApi
 import javax.inject.Inject
+
 @DelicateCoroutinesApi
 @HiltViewModel
 class CocktailViewModel @Inject constructor(

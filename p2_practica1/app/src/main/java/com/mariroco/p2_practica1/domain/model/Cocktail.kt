@@ -11,7 +11,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @Entity
 @JsonClass(generateAdapter = true)
-class Cocktail(
+abstract class Cocktail(
     @PrimaryKey(autoGenerate = false)
     val idDrink : Int= 0,
     @Json(name ="strDrink") val name: String = "",

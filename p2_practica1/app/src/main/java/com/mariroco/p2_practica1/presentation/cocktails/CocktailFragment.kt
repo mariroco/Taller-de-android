@@ -29,11 +29,9 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
 
     private lateinit var binding: CocktailFragmentBinding
-
     private lateinit var adapter: CocktailAdapter
     private val cocktailViewModel by viewModels<CocktailViewModel>()
     var newLayout = LayoutType.LINEAR
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +61,6 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
             is CocktailViewState.CocktailsReceived -> setUpAdapter(state.cocktails)
         }
     }
-
 
 
     private fun setUpAdapter(cocktails: List<Cocktail>) {
