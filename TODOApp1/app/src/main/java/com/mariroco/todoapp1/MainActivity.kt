@@ -168,16 +168,23 @@ class MainActivity : AppCompatActivity() {
         val notificationWork = OneTimeWorkRequest.Builder(NotificationManagerImpl::class.java)
             .setInitialDelay(deLay, TimeUnit.MILLISECONDS).setInputData(data).build()
         val instanceWorkManager = WorkManager.getInstance(this)
+        val workName = "NOTIFICATION_WORK ${data.getInt("notificationID", 0)}"
+
         instanceWorkManager.beginUniqueWork(
-            "NOTIFICATION_WORK ${data.getInt("notificationID", 0)}",
+            workName,
             ExistingWorkPolicy.APPEND_OR_REPLACE, notificationWork
         ).enqueue()
+
+        var notification = instanceWorkManager.getWorkInfosForUniqueWork(workName)
+
+
     }
 
     private fun unScheduleNotification(data: Data){
         val instanceWorkManager = WorkManager.getInstance(this)
         var notification = instanceWorkManager.getWorkInfosForUniqueWork("NOTIFICATION_WORK ${data.getInt("notificationID", 0)}")
         notification.cancel(true)
+
     }
 
     fun makeToast(message: String) = Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
