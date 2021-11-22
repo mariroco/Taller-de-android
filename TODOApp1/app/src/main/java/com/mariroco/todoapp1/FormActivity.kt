@@ -5,16 +5,14 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.TimePicker
+import android.widget.*
 import com.mariroco.todoapp1.MainActivity.Companion.NEW_TASK
 import com.mariroco.todoapp1.MainActivity.Companion.NEW_TASK_KEY
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class FormActivity : AppCompatActivity() {
     private lateinit var edtTitle : EditText
@@ -42,13 +40,18 @@ class FormActivity : AppCompatActivity() {
             val nowDate = LocalDate.now()
             DatePickerDialog(this,
                 { _, year, month, dayOfMonth ->
+                    val realMonth= month +1
                     //year
-                    edtDate.setText("$dayOfMonth/$month/$year")
+                    edtDate.setText(
+                        "${if(dayOfMonth<10) "0$dayOfMonth" else dayOfMonth}/${if(realMonth < 10)"0$realMonth" else realMonth}/$year"
+                    )
                 },
                 nowDate.year,
                 nowDate.monthValue-1,
                 nowDate.dayOfMonth
-            ).show()
+            ).apply {
+                datePicker.minDate= Calendar.getInstance().timeInMillis
+            }.show()
         }
 
         edtTime.setOnClickListener{
@@ -56,8 +59,9 @@ class FormActivity : AppCompatActivity() {
             TimePickerDialog(
                 this,
                 { _, hour, minute ->
-                    edtTime.setText("$hour:$minute")
-
+                    val realMinute = if (minute<10)"0$minute" else minute
+                    val realHour = if(hour<10) "0$hour" else hour
+                    edtTime.setText("$realHour:$realMinute")
                 },
                 nowTime.hour,
                 nowTime.minute,
@@ -66,24 +70,28 @@ class FormActivity : AppCompatActivity() {
         }
 
         btnAdd.setOnClickListener {
-            setResult(
-                NEW_TASK,
-                Intent().putExtra(
-                    NEW_TASK_KEY,
-                    Task(
-                        0,
-                        edtTitle.text.toString(),
-                        edtDescription.text.toString(),
-                        LocalDateTime.of(
-                            LocalDate.parse(
-                                edtDate.text,
-                                DateTimeFormatter.ofPattern("dd/MM/yyyy")
-                            ),
-                            LocalTime.parse(edtTime.text, DateTimeFormatter.ofPattern("HH:mm"))
+            if (edtTitle.text.isEmpty() || edtDescription.text.isEmpty() || edtTime.text.isEmpty()){
+                Toast.makeText(this,"Fill form",Toast.LENGTH_SHORT).show()
+            }else {
+                setResult(
+                    NEW_TASK,
+                    Intent().putExtra(
+                        NEW_TASK_KEY,
+                        Task(
+                            0,
+                            edtTitle.text.toString(),
+                            edtDescription.text.toString(),
+                            LocalDateTime.of(
+                                LocalDate.parse(
+                                    edtDate.text,
+                                    DateTimeFormatter.ofPattern("dd/MM/yyyy")
+                                ),
+                                LocalTime.parse(edtTime.text, DateTimeFormatter.ofPattern("HH:mm"))
+                            )
                         )
                     )
                 )
-            )
+            }
             finish()
         }
     }
