@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     companion object{
         val NEW_TASK=200
         val NEW_TASK_KEY = "newTask"
+        val UPDATE_TASK = 201
     }
     private lateinit var rcvTask: RecyclerView
     private lateinit var btnAddTask: FloatingActionButton
@@ -71,8 +72,11 @@ class MainActivity : AppCompatActivity() {
                 adapter.remove(position)
             }
 
-        }, onClickDetailTask={
-
+        }, onClickDetailTask={ task ->
+            startActivityForResult(Intent(this,FormActivity::class.java).apply {
+                putExtra("isTaskDetail", true)
+                putExtra("task", task)
+            }, UPDATE_TASK)
         } )
 
         rcvTask.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -104,5 +108,18 @@ class MainActivity : AppCompatActivity() {
             //}
 
         }
+        else if (requestCode == UPDATE_TASK){
+            data?.getParcelableExtra<Task>("newTask")?.let {
+                MainScope().launch(Dispatchers.Main) {
+                    adapter.update(it)
+                }
+
+                MainScope().launch(Dispatchers.IO) {
+                    db.taskDao().updateTask(it)
+                }
+            }
+
+        }
+
     }
 }

@@ -10,10 +10,10 @@ import java.time.LocalDateTime
 @Parcelize
 data class Task(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    val title: String,
-    val description: String,
-    val dateTime: LocalDateTime,
+    val id: Int = 0,
+    val title: String = "",
+    val description: String = "",
+    val dateTime: LocalDateTime ?= null,
     var status: Boolean = true
 ): Parcelable
 @Dao

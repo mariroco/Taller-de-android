@@ -22,6 +22,14 @@ class TasksAdapter (
 
     }
 
+    fun update (task: Task){
+        val index = list.indexOfFirst { it.id == task.id }
+        list[index]=task
+        notifyItemChanged(index)
+
+
+    }
+
     fun remove(position: Int){
         list.removeAt(position)
         notifyItemRemoved(position)
@@ -53,7 +61,9 @@ class TasksAdapter (
                 onClickDoneTask(data, adapterPosition)
             }
 
-            rootView.setOnClickListener {  }
+            rootView.setOnClickListener {
+                onClickDetailTask(data)
+            }
         }
     }
 
