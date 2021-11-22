@@ -8,6 +8,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
@@ -74,9 +75,19 @@ class MainActivity : AppCompatActivity() {
     private fun setAdapter(){
         adapter = TasksAdapter(tasks, onClickDoneTask ={ task, position ->
             MainScope().launch{
+
                 db.taskDao().updateTask(task.apply {
                     status = false
                 })
+
+                unScheduleNotification(Data.Builder().apply{
+                    putInt("notificationID", task.id)
+                    putString("notificationTitle",task.title)
+                    putString("notificationDescription", task.description)
+                }.build())
+
+                makeToast("Done!")
+
                 adapter.remove(position)
             }
 
@@ -162,4 +173,12 @@ class MainActivity : AppCompatActivity() {
             ExistingWorkPolicy.APPEND_OR_REPLACE, notificationWork
         ).enqueue()
     }
+
+    private fun unScheduleNotification(data: Data){
+        val instanceWorkManager = WorkManager.getInstance(this)
+        var notification = instanceWorkManager.getWorkInfosForUniqueWork("NOTIFICATION_WORK ${data.getInt("notificationID", 0)}")
+        notification.cancel(true)
+    }
+
+    fun makeToast(message: String) = Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
 }
