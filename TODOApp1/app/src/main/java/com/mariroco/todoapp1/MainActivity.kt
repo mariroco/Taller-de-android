@@ -1,18 +1,25 @@
 package com.mariroco.todoapp1
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import androidx.work.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.Month
+import java.time.OffsetDateTime
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             tasks = savedTasks
         }
 
+        createNotificationChannel()
         initView()
 
     }
@@ -100,6 +108,15 @@ class MainActivity : AppCompatActivity() {
 
                 MainScope().launch(Dispatchers.IO) {
                     db.taskDao().saveNewTask(it)
+                    val zone = OffsetDateTime.now().offset
+                    val selectedMillis=it.dateTime?.toInstant(zone)?.toEpochMilli() ?: 0
+                    val nowMillis = LocalDateTime.now().toInstant(zone).toEpochMilli()
+
+                    scheduleNotification(selectedMillis - nowMillis,Data.Builder().apply {
+                        putInt("notificationID", it.id)
+                        putString("notificationTitle",it.title)
+                        putString("notificationDescription", it.description)
+                    }.build())
                 }
 
             }
@@ -121,5 +138,28 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun createNotificationChannel() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val name="TASKS"
+            val descriptionText ="Channel of pending tasks"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel= NotificationChannel("TASK_CHANNEL",name, importance).apply {
+                description = descriptionText
+            }
+            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    private fun scheduleNotification(deLay: Long,data: Data){
+        val notificationWork = OneTimeWorkRequest.Builder(NotificationManagerImpl::class.java)
+            .setInitialDelay(deLay, TimeUnit.MILLISECONDS).setInputData(data).build()
+        val instanceWorkManager = WorkManager.getInstance(this)
+        instanceWorkManager.beginUniqueWork(
+            "NOTIFICATION_WORK ${data.getInt("notificationID", 0)}",
+            ExistingWorkPolicy.APPEND_OR_REPLACE, notificationWork
+        ).enqueue()
     }
 }
